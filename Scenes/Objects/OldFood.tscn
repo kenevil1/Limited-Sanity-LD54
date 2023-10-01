@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://damfqplwkbrir"]
+
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="1_ey8ec"]
+[ext_resource type="ArrayMesh" uid="uid://dvlomry4p1tm1" path="res://models/Items/Items-5.obj" id="1_gd7sk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_huvyk"]
+size = Vector3(0.428263, 0.326091, 0.427643)
+
+[node name="OldFood" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Item"]]
+script = ExtResource("1_ey8ec")
+
+[node name="Items-5" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03827, 1.19209e-07, 0.53552)
+mesh = ExtResource("1_gd7sk")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14744, -0.0521894)
+shape = SubResource("BoxShape3D_huvyk")

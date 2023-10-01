@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddnpcu78xu656"]
+
+[ext_resource type="ArrayMesh" uid="uid://bl8w6o83skpj3" path="res://models/TheEvent/TheEvent-0.obj" id="1_8a8hr"]
+[ext_resource type="ArrayMesh" uid="uid://dcylpp2c62dmh" path="res://models/TheEvent/TheEvent-1.obj" id="2_eqxag"]
+[ext_resource type="PackedScene" uid="uid://bber16nwysqb5" path="res://Scenes/Objects/Lore/Lighter.tscn" id="3_xitl8"]
+[ext_resource type="PackedScene" uid="uid://dmeb508bcjj78" path="res://Scenes/Objects/Lore/GreenAlcohol.tscn" id="4_lsn1s"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_it6ps"]
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_box_extents = Vector3(0.5, 0.5, 0.5)
+spread = 138.03
+gravity = Vector3(0, 3, 0)
+angle_min = 161.8
+angle_max = 420.7
+scale_min = 0.2
+scale_max = 1.4
+hue_variation_min = -1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_keo0a"]
+blend_mode = 1
+albedo_color = Color(1, 0, 0, 0.490196)
+
+[sub_resource type="SphereMesh" id="SphereMesh_mjy4g"]
+material = SubResource("StandardMaterial3D_keo0a")
+radius = 0.1
+height = 0.2
+
+[node name="TheEvent" type="Node3D"]
+
+[node name="TheEvent-0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114689, 0, 1.31446)
+mesh = ExtResource("1_8a8hr")
+
+[node name="TheEvent-1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114689, 0, 0.113814)
+mesh = ExtResource("2_eqxag")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.068323, 0.528348, 1.27949)
+amount = 436
+visibility_aabb = AABB(-0.568339, 1.36865, -0.0758169, 1.23141, 0.584973, 2.4966)
+trail_lifetime = 5.04
+process_material = SubResource("ParticleProcessMaterial_it6ps")
+draw_pass_1 = SubResource("SphereMesh_mjy4g")
+
+[node name="Lighter" parent="." instance=ExtResource("3_xitl8")]
+transform = Transform3D(0.00125968, -0.798898, -0.601465, 0.00167317, 0.601466, -0.798896, 0.999998, -6.34435e-11, 0.00209434, 1.73092, 0.569866, 0.343451)
+
+[node name="GreenAlcohol" parent="." instance=ExtResource("4_lsn1s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.32646, 0.264843, 0.0841714)

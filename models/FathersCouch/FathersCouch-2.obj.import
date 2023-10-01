@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://crchi8nkhbo70"
+path="res://.godot/imported/FathersCouch-2.obj-b656c4fa2f1aeb14a673b2683bb42af8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/FathersCouch-2.obj-b656c4fa2f1aeb14a673b2683bb42af8.mesh"]
+
+source_file="res://models/FathersCouch/FathersCouch-2.obj"
+dest_files=["res://.godot/imported/FathersCouch-2.obj-b656c4fa2f1aeb14a673b2683bb42af8.mesh", "res://.godot/imported/FathersCouch-2.obj-b656c4fa2f1aeb14a673b2683bb42af8.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bytlbnj2m1osy"]
+
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="1_0f125"]
+[ext_resource type="ArrayMesh" uid="uid://b7aty7b2i2qaj" path="res://models/Items/Items-7.obj" id="1_68ttx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fl2nt"]
+size = Vector3(0.335668, 0.18556, 1)
+
+[node name="OldWire" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Item"]]
+script = ExtResource("1_0f125")
+
+[node name="Items-7" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.35769, 0.000578001, 1.52089)
+mesh = ExtResource("1_68ttx")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_fl2nt")

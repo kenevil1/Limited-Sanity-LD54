@@ -1,0 +1,152 @@
+[gd_scene load_steps=27 format=3 uid="uid://cparcbyjo27x7"]
+
+[ext_resource type="Script" path="res://Scripts/KidsRoomStorage.gd" id="1_6ki03"]
+[ext_resource type="ArrayMesh" uid="uid://fpdu7nmlyb3d" path="res://models/KidsRoomStorage/KidsRoomStorage-0.obj" id="1_umn8k"]
+[ext_resource type="ArrayMesh" uid="uid://whh3b4tslfhg" path="res://models/KidsRoomStorage/KidsRoomStorage-1.obj" id="2_swj55"]
+[ext_resource type="ArrayMesh" uid="uid://d0w5ch0baoww0" path="res://models/KidsRoomStorage/KidsRoomStorage-2.obj" id="3_gsf0b"]
+[ext_resource type="ArrayMesh" uid="uid://ckrd6vufhyxsr" path="res://models/KidsRoomStorage/KidsRoomStorage-3.obj" id="4_48osa"]
+[ext_resource type="ArrayMesh" uid="uid://b48bp2rus5jii" path="res://models/KidsRoomStorage/KidsRoomStorage-4.obj" id="5_t7g0k"]
+[ext_resource type="ArrayMesh" uid="uid://1e3s2qvs3v7c" path="res://models/KidsRoomStorage/KidsRoomStorage-5.obj" id="6_qthpk"]
+[ext_resource type="ArrayMesh" uid="uid://dlsbwha6rpc0n" path="res://models/KidsRoomStorage/KidsRoomStorage-6.obj" id="7_0f4vu"]
+[ext_resource type="ArrayMesh" uid="uid://dcdgfgq0oorbj" path="res://models/KidsRoomStorage/KidsRoomStorage-7.obj" id="8_cwgjm"]
+[ext_resource type="ArrayMesh" uid="uid://c4ct2kwhrl4cb" path="res://models/KidsRoomStorage/KidsRoomStorage-8.obj" id="9_4tdm1"]
+[ext_resource type="ArrayMesh" uid="uid://1oi6vpj6kicq" path="res://models/KidsRoomStorage/KidsRoomStorage-9.obj" id="10_sgjgx"]
+[ext_resource type="ArrayMesh" uid="uid://bkqbr7chms8yy" path="res://models/KidsRoomStorage/KidsRoomStorage-11.obj" id="11_wlodu"]
+[ext_resource type="ArrayMesh" uid="uid://d21ux6s4xu7kr" path="res://models/KidsRoomStorage/KidsRoomStorage-12.obj" id="12_g2c20"]
+[ext_resource type="ArrayMesh" uid="uid://b24wa7vrwwwof" path="res://models/KidsRoomStorage/KidsRoomStorage-14.obj" id="13_igg0y"]
+[ext_resource type="ArrayMesh" uid="uid://ps1ymayhk0p5" path="res://models/KidsRoomStorage/KidsRoomStorage-15.obj" id="14_6v17i"]
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="14_wht1n"]
+[ext_resource type="ArrayMesh" uid="uid://deronh23fkg8f" path="res://models/KidsRoomStorage/KidsRoomStorage-16.obj" id="15_8gw0y"]
+[ext_resource type="Script" path="res://Scripts/ObjectDialogue.gd" id="15_74pm8"]
+[ext_resource type="ArrayMesh" uid="uid://b7qvgktbqt0yx" path="res://models/KidsRoomStorage/KidsRoomStorage-17.obj" id="16_anhai"]
+[ext_resource type="ArrayMesh" uid="uid://3dav05vdkwm0" path="res://models/KidsRoom/KidsRoom-10.obj" id="19_yxv52"]
+[ext_resource type="PackedScene" uid="uid://0ygq6pr78ol" path="res://Scenes/Door.tscn" id="21_f542w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_odpoa"]
+size = Vector3(0.282197, 0.682092, 0.510465)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_m7sxs"]
+data = PackedVector3Array(-2.5, 0, -3, -2.5, 5, 3, -2.5, 0, 3, -2.5, 0, -3, -2.5, 5, -3, -2.5, 5, 3, 1, 0.1, 2.9, 1, 3.2, 3, 1, 0.1, 3, 1, 0.1, 2.9, 1, 3.2, 2.9, 1, 3.2, 3, 1, 0.1, -3, 1, 3.2, -2.9, 1, 0.1, -2.9, 1, 0.1, -3, 1, 3.2, -3, 1, 3.2, -2.9, 2.4, 0.1, -2.9, 2.4, 5, 2.9, 2.4, 0.1, 2.9, 2.4, 0.1, -2.9, 2.4, 5, -2.9, 2.4, 5, 2.9, -2.4, 0.1, -2.9, -2.4, 0.1, 2.9, -2.4, 5, 2.9, -2.4, 0.1, -2.9, -2.4, 5, 2.9, -2.4, 5, -2.9, -0.9, 0.1, 2.9, -0.9, 0.1, 3, -0.9, 3.2, 3, -0.9, 0.1, 2.9, -0.9, 3.2, 3, -0.9, 3.2, 2.9, -0.9, 0.1, -3, -0.9, 0.1, -2.9, -0.9, 3.2, -2.9, -0.9, 0.1, -3, -0.9, 3.2, -2.9, -0.9, 3.2, -3, 2.5, 0, -3, 2.5, 0, 3, 2.5, 5, 3, 2.5, 0, -3, 2.5, 5, 3, 2.5, 5, -3, -2.5, 5, 3, -0.9, 0.1, 3, -2.5, 0, 3, -2.5, 5, 3, -0.9, 3.2, 3, -0.9, 0.1, 3, -0.9, 0.1, 3, 1, 0.1, 3, -2.5, 0, 3, -2.5, 5, 3, 1, 3.2, 3, -0.9, 3.2, 3, 1, 0.1, 3, 2.5, 0, 3, -2.5, 0, 3, 1, 3.2, 3, 2.5, 0, 3, 1, 0.1, 3, -2.5, 5, 3, 2.5, 5, 3, 1, 3.2, 3, 1, 3.2, 3, 2.5, 5, 3, 2.5, 0, 3, -2.4, 5, -2.9, -0.9, 0.1, -2.9, -2.4, 0.1, -2.9, -2.4, 5, -2.9, -0.9, 3.2, -2.9, -0.9, 0.1, -2.9, -2.4, 5, -2.9, 1, 3.2, -2.9, -0.9, 3.2, -2.9, 1, 3.2, -2.9, 2.4, 0.1, -2.9, 1, 0.1, -2.9, -2.4, 5, -2.9, 2.4, 5, -2.9, 1, 3.2, -2.9, 1, 3.2, -2.9, 2.4, 5, -2.9, 2.4, 0.1, -2.9, -2.4, 5, 2.9, -2.4, 0.1, 2.9, -0.9, 0.1, 2.9, -2.4, 5, 2.9, -0.9, 0.1, 2.9, -0.9, 3.2, 2.9, -2.4, 5, 2.9, -0.9, 3.2, 2.9, 1, 3.2, 2.9, 1, 3.2, 2.9, 1, 0.1, 2.9, 2.4, 0.1, 2.9, -2.4, 5, 2.9, 1, 3.2, 2.9, 2.4, 5, 2.9, 1, 3.2, 2.9, 2.4, 0.1, 2.9, 2.4, 5, 2.9, -2.5, 5, -3, -2.5, 0, -3, -0.9, 0.1, -3, -2.5, 5, -3, -0.9, 0.1, -3, -0.9, 3.2, -3, -0.9, 0.1, -3, -2.5, 0, -3, 1, 0.1, -3, -2.5, 5, -3, -0.9, 3.2, -3, 1, 3.2, -3, 1, 0.1, -3, -2.5, 0, -3, 2.5, 0, -3, 1, 3.2, -3, 1, 0.1, -3, 2.5, 0, -3, -2.5, 5, -3, 1, 3.2, -3, 2.5, 5, -3, 1, 3.2, -3, 2.5, 0, -3, 2.5, 5, -3, 2.5, 0, 3, -2.5, 0, -3, -2.5, 0, 3, 2.5, 0, 3, 2.5, 0, -3, -2.5, 0, -3, 1, 3.2, 3, -0.9, 3.2, 2.9, -0.9, 3.2, 3, 1, 3.2, 3, 1, 3.2, 2.9, -0.9, 3.2, 2.9, 1, 3.2, -2.9, -0.9, 3.2, -3, -0.9, 3.2, -2.9, 1, 3.2, -2.9, 1, 3.2, -3, -0.9, 3.2, -3, 1, 0.1, 3, -0.9, 0.1, 3, -0.9, 0.1, 2.9, 1, 0.1, 3, -0.9, 0.1, 2.9, 1, 0.1, 2.9, -0.9, 0.1, 2.9, -2.4, 0.1, 2.9, -2.4, 0.1, -2.9, 2.4, 0.1, 2.9, 1, 0.1, 2.9, -2.4, 0.1, -2.9, 1, 0.1, 2.9, -0.9, 0.1, 2.9, -2.4, 0.1, -2.9, 2.4, 0.1, 2.9, -2.4, 0.1, -2.9, -0.9, 0.1, -2.9, 2.4, 0.1, 2.9, -0.9, 0.1, -2.9, 1, 0.1, -2.9, 2.4, 0.1, 2.9, 1, 0.1, -2.9, 2.4, 0.1, -2.9, 1, 0.1, -2.9, -0.9, 0.1, -2.9, -0.9, 0.1, -3, 1, 0.1, -2.9, -0.9, 0.1, -3, 1, 0.1, -3, 2.5, 5, 3, -2.5, 5, 3, -2.4, 5, 2.9, 2.5, 5, 3, -2.4, 5, 2.9, 2.4, 5, 2.9, -2.4, 5, 2.9, -2.5, 5, 3, -2.4, 5, -2.9, 2.5, 5, 3, 2.4, 5, 2.9, 2.4, 5, -2.9, -2.4, 5, -2.9, -2.5, 5, 3, -2.5, 5, -3, 2.4, 5, -2.9, -2.4, 5, -2.9, -2.5, 5, -3, 2.5, 5, 3, 2.4, 5, -2.9, 2.5, 5, -3, 2.4, 5, -2.9, -2.5, 5, -3, 2.5, 5, -3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mika8"]
+size = Vector3(0.465, 0.53, 0.505)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifosg"]
+albedo_color = Color(1, 0, 0, 1)
+emission_enabled = true
+rim_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_8qn1b"]
+
+[node name="KidsRoomStorage" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.155195, 0, 1.18093)
+script = ExtResource("1_6ki03")
+
+[node name="KidsRoomStorage-0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("1_umn8k")
+
+[node name="KidsRoomStorage-1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("2_swj55")
+
+[node name="KidsRoomStorage-2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("3_gsf0b")
+
+[node name="KidsRoomStorage-3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("4_48osa")
+
+[node name="KidsRoomStorage-4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("5_t7g0k")
+
+[node name="KidsRoomStorage-5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("6_qthpk")
+
+[node name="KidsRoomStorage-6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("7_0f4vu")
+
+[node name="KidsRoomStorage-7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("8_cwgjm")
+
+[node name="KidsRoomStorage-8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("9_4tdm1")
+
+[node name="KidsRoomStorage-9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("10_sgjgx")
+
+[node name="KidsRoomStorage-11" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("11_wlodu")
+
+[node name="KidsRoomStorage-12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("12_g2c20")
+
+[node name="KidsRoomStorage-14" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+visible = false
+mesh = ExtResource("13_igg0y")
+
+[node name="TheEntity" type="Node3D" parent="."]
+transform = Transform3D(-0.809499, 0, -0.587121, 0, 1, 0, 0.587121, 0, -0.809499, 1.34533, 0.341428, -3.43497)
+
+[node name="StaticBody3D" type="RigidBody3D" parent="TheEntity" groups=["ObjectDialogue"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.00814, -0.242568, 2.1023)
+script = ExtResource("15_74pm8")
+dialogue_text = "..."
+
+[node name="TheEntityEthereal" type="MeshInstance3D" parent="TheEntity/StaticBody3D"]
+mesh = ExtResource("14_6v17i")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TheEntity/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.91347, 0.431612, -2.1433)
+shape = SubResource("BoxShape3D_odpoa")
+
+[node name="KidsRoomStorage-16" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("15_8gw0y")
+
+[node name="KidsRoomStorage-17" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.318604, -1.19209e-07, -1.04752)
+mesh = ExtResource("16_anhai")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="KidsRoomStorage-17"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KidsRoomStorage-17/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_m7sxs")
+
+[node name="RedCar" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.45236, 0.164018, 1.60481)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="RedCar" groups=["Item"]]
+script = ExtResource("14_wht1n")
+dialogue_text = "Your Fault"
+
+[node name="KidsRoom-10" type="MeshInstance3D" parent="RedCar/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64465, -0.0814048, -0.11687)
+mesh = ExtResource("19_yxv52")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RedCar/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0859091, 0.298313, -0.0133324)
+shape = SubResource("BoxShape3D_mika8")
+
+[node name="Light" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.157655, 0, 0, 0, 0.620449, 0, 0, 0, 0.659695, -2.64817, 3.60739, -1.42448)
+material_override = SubResource("StandardMaterial3D_ifosg")
+mesh = SubResource("BoxMesh_8qn1b")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Light"]
+omni_range = 6.22486
+
+[node name="Door" parent="." instance=ExtResource("21_f542w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.607336, 0.0999998, -4.04046)

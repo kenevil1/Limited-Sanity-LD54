@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5w5xv7igom0p"]
+
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="1_nxlnx"]
+[ext_resource type="ArrayMesh" uid="uid://1e3s2qvs3v7c" path="res://models/KidsRoomStorage/KidsRoomStorage-5.obj" id="1_vc0qk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2veou"]
+size = Vector3(0.494371, 0.285502, 0.478857)
+
+[node name="PackingBox" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Item", "PackingBox"]]
+script = ExtResource("1_nxlnx")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0111407, 0.170306, -0.00420904)
+shape = SubResource("BoxShape3D_2veou")
+
+[node name="KidsRoomStorage-5" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73546, -1.07692, 2.14681)
+mesh = ExtResource("1_vc0qk")
+skeleton = NodePath("../..")

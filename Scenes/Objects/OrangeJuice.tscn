@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4052nb0vuxf7"]
+
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="1_qjhk5"]
+[ext_resource type="ArrayMesh" uid="uid://ln1t051mikoh" path="res://models/Items/Items-3.obj" id="1_x54al"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8r7l3"]
+radius = 0.182551
+height = 0.614959
+
+[node name="OrangeJuice" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Item"]]
+script = ExtResource("1_qjhk5")
+
+[node name="Items-3" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44237, 0, -1.56403)
+mesh = ExtResource("1_x54al")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310565, 0)
+shape = SubResource("CapsuleShape3D_8r7l3")

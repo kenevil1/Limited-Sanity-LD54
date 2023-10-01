@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://deronh23fkg8f"
+path="res://.godot/imported/KidsRoomStorage-16.obj-95a65cdf11f73db86c297982df8dc0ab.mesh"
+
+[deps]
+
+files=["res://.godot/imported/KidsRoomStorage-16.obj-95a65cdf11f73db86c297982df8dc0ab.mesh"]
+
+source_file="res://models/KidsRoomStorage/KidsRoomStorage-16.obj"
+dest_files=["res://.godot/imported/KidsRoomStorage-16.obj-95a65cdf11f73db86c297982df8dc0ab.mesh", "res://.godot/imported/KidsRoomStorage-16.obj-95a65cdf11f73db86c297982df8dc0ab.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

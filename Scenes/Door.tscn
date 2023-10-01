@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://0ygq6pr78ol"]
+
+[ext_resource type="ArrayMesh" uid="uid://vbxoyeefi0no" path="res://models/Door.obj" id="1_07sqn"]
+[ext_resource type="Script" path="res://Scripts/Door.gd" id="1_suf6h"]
+[ext_resource type="AudioStream" uid="uid://b30y4vac6okx4" path="res://Audio/DoorOpening1.ogg" id="3_ofh2c"]
+[ext_resource type="AudioStream" uid="uid://dcfu5ujmmvjmk" path="res://Audio/DoorClosing1.ogg" id="4_yl8tn"]
+[ext_resource type="AudioStream" uid="uid://bje0m6a1tlya1" path="res://Audio/LockedDoor1.ogg" id="5_v7mh0"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_mfydy"]
+data = PackedVector3Array(-0.6, 0, 0, -0.6, 3.1, 0.1, -0.6, 0, 0.1, -0.6, 0, 0, -0.6, 3.1, 0, -0.6, 3.1, 0.1, -0.5, 1.5, 0.2, -0.5, 1.6, 0.3, -0.5, 1.5, 0.3, -0.5, 1.5, 0.1, -0.5, 1.6, 0.2, -0.5, 1.5, 0.2, -0.5, 1.5, 0.2, -0.5, 1.6, 0.2, -0.5, 1.6, 0.3, -0.5, 1.5, 0.1, -0.5, 1.6, 0.1, -0.5, 1.6, 0.2, -0.5, 1.5, -0.1, -0.5, 1.6, 0, -0.5, 1.5, 0, -0.5, 1.5, -0.2, -0.5, 1.6, -0.1, -0.5, 1.5, -0.1, -0.5, 1.5, -0.1, -0.5, 1.6, -0.1, -0.5, 1.6, 0, -0.5, 1.5, -0.2, -0.5, 1.6, -0.2, -0.5, 1.6, -0.1, -0.4, 1.5, 0.1, -0.4, 1.5, 0.2, -0.4, 1.6, 0.2, -0.4, 1.5, 0.1, -0.4, 1.6, 0.2, -0.4, 1.6, 0.1, -0.4, 1.5, -0.1, -0.4, 1.5, 0, -0.4, 1.6, 0, -0.4, 1.5, -0.1, -0.4, 1.6, 0, -0.4, 1.6, -0.1, -0.2, 1.5, 0.2, -0.2, 1.5, 0.3, -0.2, 1.6, 0.3, -0.2, 1.5, 0.2, -0.2, 1.6, 0.3, -0.2, 1.6, 0.2, -0.2, 1.5, -0.2, -0.2, 1.5, -0.1, -0.2, 1.6, -0.1, -0.2, 1.5, -0.2, -0.2, 1.6, -0.1, -0.2, 1.6, -0.2, 1.3, 0, 0, 1.3, 0, 0.1, 1.3, 3.1, 0.1, 1.3, 0, 0, 1.3, 3.1, 0.1, 1.3, 3.1, 0, -0.5, 1.6, 0.3, -0.2, 1.5, 0.3, -0.5, 1.5, 0.3, -0.5, 1.6, 0.3, -0.2, 1.6, 0.3, -0.2, 1.5, 0.3, -0.6, 3.1, 0.1, -0.5, 1.5, 0.1, -0.6, 0, 0.1, -0.6, 3.1, 0.1, -0.5, 1.6, 0.1, -0.5, 1.5, 0.1, -0.5, 1.5, 0.1, -0.4, 1.5, 0.1, -0.6, 0, 0.1, -0.6, 3.1, 0.1, -0.4, 1.6, 0.1, -0.5, 1.6, 0.1, -0.4, 1.5, 0.1, 1.3, 0, 0.1, -0.6, 0, 0.1, -0.4, 1.6, 0.1, 1.3, 0, 0.1, -0.4, 1.5, 0.1, -0.6, 3.1, 0.1, 1.3, 3.1, 0.1, -0.4, 1.6, 0.1, -0.4, 1.6, 0.1, 1.3, 3.1, 0.1, 1.3, 0, 0.1, -0.4, 1.6, -0.1, -0.2, 1.5, -0.1, -0.4, 1.5, -0.1, -0.4, 1.6, -0.1, -0.2, 1.6, -0.1, -0.2, 1.5, -0.1, -0.4, 1.6, 0.2, -0.4, 1.5, 0.2, -0.2, 1.5, 0.2, -0.4, 1.6, 0.2, -0.2, 1.5, 0.2, -0.2, 1.6, 0.2, -0.6, 3.1, 0, -0.6, 0, 0, -0.5, 1.5, 0, -0.6, 3.1, 0, -0.5, 1.5, 0, -0.5, 1.6, 0, -0.5, 1.5, 0, -0.6, 0, 0, -0.4, 1.5, 0, -0.6, 3.1, 0, -0.5, 1.6, 0, -0.4, 1.6, 0, -0.4, 1.5, 0, -0.6, 0, 0, 1.3, 0, 0, -0.4, 1.6, 0, -0.4, 1.5, 0, 1.3, 0, 0, -0.6, 3.1, 0, -0.4, 1.6, 0, 1.3, 3.1, 0, -0.4, 1.6, 0, 1.3, 0, 0, 1.3, 3.1, 0, -0.5, 1.6, -0.2, -0.5, 1.5, -0.2, -0.2, 1.5, -0.2, -0.5, 1.6, -0.2, -0.2, 1.5, -0.2, -0.2, 1.6, -0.2, 1.3, 0, 0.1, -0.6, 0, 0, -0.6, 0, 0.1, 1.3, 0, 0.1, 1.3, 0, 0, -0.6, 0, 0, -0.2, 1.5, 0.3, -0.5, 1.5, 0.2, -0.5, 1.5, 0.3, -0.2, 1.5, 0.3, -0.4, 1.5, 0.2, -0.5, 1.5, 0.2, -0.2, 1.5, 0.3, -0.2, 1.5, 0.2, -0.4, 1.5, 0.2, -0.4, 1.5, 0.2, -0.5, 1.5, 0.1, -0.5, 1.5, 0.2, -0.4, 1.5, 0.2, -0.4, 1.5, 0.1, -0.5, 1.5, 0.1, -0.4, 1.5, 0, -0.5, 1.5, -0.1, -0.5, 1.5, 0, -0.4, 1.5, 0, -0.4, 1.5, -0.1, -0.5, 1.5, -0.1, -0.4, 1.5, -0.1, -0.5, 1.5, -0.2, -0.5, 1.5, -0.1, -0.2, 1.5, -0.1, -0.5, 1.5, -0.2, -0.4, 1.5, -0.1, -0.2, 1.5, -0.1, -0.2, 1.5, -0.2, -0.5, 1.5, -0.2, -0.2, 1.6, 0.3, -0.5, 1.6, 0.3, -0.5, 1.6, 0.2, -0.2, 1.6, 0.3, -0.5, 1.6, 0.2, -0.4, 1.6, 0.2, -0.2, 1.6, 0.3, -0.4, 1.6, 0.2, -0.2, 1.6, 0.2, -0.4, 1.6, 0.2, -0.5, 1.6, 0.2, -0.5, 1.6, 0.1, -0.4, 1.6, 0.2, -0.5, 1.6, 0.1, -0.4, 1.6, 0.1, -0.4, 1.6, 0, -0.5, 1.6, 0, -0.5, 1.6, -0.1, -0.4, 1.6, 0, -0.5, 1.6, -0.1, -0.4, 1.6, -0.1, -0.4, 1.6, -0.1, -0.5, 1.6, -0.1, -0.5, 1.6, -0.2, -0.2, 1.6, -0.1, -0.4, 1.6, -0.1, -0.5, 1.6, -0.2, -0.2, 1.6, -0.1, -0.5, 1.6, -0.2, -0.2, 1.6, -0.2, 1.3, 3.1, 0.1, -0.6, 3.1, 0.1, -0.6, 3.1, 0, 1.3, 3.1, 0.1, -0.6, 3.1, 0, 1.3, 3.1, 0)
+
+[sub_resource type="Animation" id="Animation_ubgb2"]
+resource_name = "Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.56949, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y7gdp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jlrv8"]
+_data = {
+"Open": SubResource("Animation_ubgb2"),
+"RESET": SubResource("Animation_y7gdp")
+}
+
+[node name="Door" type="Node3D"]
+
+[node name="DoorStatic" type="StaticBody3D" parent="." groups=["Door"]]
+script = ExtResource("1_suf6h")
+
+[node name="DoorMesh" type="MeshInstance3D" parent="DoorStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26429, 0, 0)
+mesh = ExtResource("1_07sqn")
+skeleton = NodePath("")
+
+[node name="DoorOpenAudio" type="AudioStreamPlayer3D" parent="DoorStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74199, 1.49919, 0)
+stream = ExtResource("3_ofh2c")
+volume_db = -10.174
+pitch_scale = 0.93
+
+[node name="DoorCloseAudio" type="AudioStreamPlayer3D" parent="DoorStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70434, 1.48716, 0)
+stream = ExtResource("4_yl8tn")
+
+[node name="DoorLockedAudio" type="AudioStreamPlayer3D" parent="DoorStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.40868, 2.97432, 0)
+stream = ExtResource("5_v7mh0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DoorStatic"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26429, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_mfydy")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DoorStatic"]
+libraries = {
+"": SubResource("AnimationLibrary_jlrv8")
+}

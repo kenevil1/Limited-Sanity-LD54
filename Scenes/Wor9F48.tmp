@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr0e6ftc4saoh"]
+
+[ext_resource type="PackedScene" uid="uid://djolv7pqoi704" path="res://Scenes/bedroomand_main_room.tscn" id="1_qey0t"]
+[ext_resource type="PackedScene" uid="uid://bklnblsabip41" path="res://Scenes/Player.tscn" id="2_mst2r"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_74dle"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0yjl1"]
+rim_enabled = true
+
+[sub_resource type="Environment" id="Environment_flor1"]
+glow_enabled = true
+glow_bloom = 0.45
+
+[node name="World" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9244, 0, 0)
+
+[node name="Player" parent="." instance=ExtResource("2_mst2r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3039, 0.348981, 4.50092)
+
+[node name="Bedroom_and_Mainroom" parent="." instance=ExtResource("1_qey0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.51013, 0, 1.51228)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4475, 0.664663, 0)
+mesh = SubResource("BoxMesh_74dle")
+surface_material_override/0 = SubResource("StandardMaterial3D_0yjl1")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_flor1")

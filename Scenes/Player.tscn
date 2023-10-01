@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://bklnblsabip41"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_t3def"]
+[ext_resource type="Texture2D" uid="uid://bj215ad5xhxad" path="res://UI/backgroundtextbox.png" id="2_8nmly"]
+[ext_resource type="Script" path="res://Scripts/Dialogue.gd" id="2_ugowu"]
+[ext_resource type="FontFile" uid="uid://bn7xe5rangiex" path="res://UI/superstar_memesbruh03.ttf" id="4_n25r7"]
+[ext_resource type="AudioStream" uid="uid://dxdac2era4qia" path="res://Audio/NormalVoice/normalvoice1.ogg" id="5_5f5u6"]
+[ext_resource type="AudioStream" uid="uid://biu6dy1pwqqe2" path="res://Audio/NormalVoice/normalvoice2.ogg" id="6_1txa6"]
+[ext_resource type="AudioStream" uid="uid://co3kocpc8wxvm" path="res://Audio/NormalVoice/normalvoice3.ogg" id="7_yol18"]
+[ext_resource type="AudioStream" uid="uid://dhvy7tyvvepe8" path="res://Audio/NormalVoice/normalvoice4.ogg" id="8_meojp"]
+[ext_resource type="AudioStream" uid="uid://c8tgan6f8rltt" path="res://Audio/NormalVoice/normalvoice5.ogg" id="9_m8omc"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_k6758"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5d2m3"]
+streams_count = 5
+stream_0/stream = ExtResource("5_5f5u6")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("6_1txa6")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("7_yol18")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("8_meojp")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("9_m8omc")
+stream_4/weight = 1.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f0mia"]
+height = 2.56028
+
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_t3def")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14743, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+attributes = SubResource("CameraAttributesPractical_k6758")
+current = true
+
+[node name="PickupPoint" type="Node3D" parent="Head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.08427)
+
+[node name="LookingCast" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -4)
+
+[node name="UI" type="Control" parent="Head/Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dialogue" type="MarginContainer" parent="Head/Camera3D/UI" groups=["Dialogue", "Player"]]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -26.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+script = ExtResource("2_ugowu")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Head/Camera3D/UI/Dialogue"]
+layout_mode = 2
+texture = ExtResource("2_8nmly")
+patch_margin_left = 10
+patch_margin_top = 9
+patch_margin_right = 10
+patch_margin_bottom = 9
+
+[node name="MarginContainer" type="MarginContainer" parent="Head/Camera3D/UI/Dialogue"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="DialogueText" type="Label" parent="Head/Camera3D/UI/Dialogue/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_n25r7")
+theme_override_font_sizes/font_size = 9
+vertical_alignment = 1
+
+[node name="LetterTimer" type="Timer" parent="Head/Camera3D/UI/Dialogue"]
+one_shot = true
+
+[node name="BubbleTimer" type="Timer" parent="Head/Camera3D/UI/Dialogue"]
+one_shot = true
+
+[node name="NormalVoice" type="AudioStreamPlayer3D" parent="Head/Camera3D/UI/Dialogue"]
+stream = SubResource("AudioStreamRandomizer_5d2m3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28901, 0)
+shape = SubResource("CapsuleShape3D_f0mia")
+
+[connection signal="finished_displaying" from="Head/Camera3D/UI/Dialogue" to="Head/Camera3D/UI/Dialogue" method="_on_finished_displaying"]
+[connection signal="timeout" from="Head/Camera3D/UI/Dialogue/LetterTimer" to="Head/Camera3D/UI/Dialogue" method="_on_letter_timer_timeout"]
+[connection signal="timeout" from="Head/Camera3D/UI/Dialogue/BubbleTimer" to="Head/Camera3D/UI/Dialogue" method="_on_bubble_timer_timeout"]

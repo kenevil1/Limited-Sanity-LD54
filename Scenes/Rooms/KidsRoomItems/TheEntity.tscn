@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://culiv66k1py7x"]
+
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="1_kt4ty"]
+[ext_resource type="ArrayMesh" uid="uid://bf8t12bh8ai4l" path="res://models/KidsRoom/KidsRoom-3.obj" id="1_ryhxp"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hkrhg"]
+points = PackedVector3Array(1.89921, 0.397542, -2.40387, 2, 0.497317, -1.90194, 1.99211, 0.578668, -2.1, 2, 0.101941, -2.29724, 1.8, 0.105848, -2.00508, 1.89921, 0.603901, -2.09447, 2, 0.101941, -2.00276, 1.8, 0.105848, -2.29492, 2, 0.497317, -2.39801, 1.89921, 0.500747, -1.89608, 1.79603, 0.20719, -2.30072, 1.89921, 0.500747, -2.40387, 1.79603, 0.20719, -1.99928, 2.00238, 0.397542, -1.89608, 1.89921, 0.603901, -2.20553, 2.00238, 0.397542, -2.40387, 1.89921, 0.397542, -1.89608, 1.99212, 0.578691, -2.2)
+
+[node name="TheEntity" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Item"]]
+script = ExtResource("1_kt4ty")
+dialogue_text = "Good boys clean up after themselves"
+
+[node name="KidsRoom-3" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94648, 0, 2.09818)
+mesh = ExtResource("1_ryhxp")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94648, 0, 2.09818)
+shape = SubResource("ConvexPolygonShape3D_hkrhg")

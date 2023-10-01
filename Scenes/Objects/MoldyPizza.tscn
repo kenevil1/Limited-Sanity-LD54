@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://g4tkf4y6rqb1"]
+
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="1_3r527"]
+[ext_resource type="ArrayMesh" uid="uid://wopkry2c7t4j" path="res://models/Items/Items-8.obj" id="1_vyqaa"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j668b"]
+size = Vector3(0.615199, 0.161144, 0.674675)
+
+[node name="MoldyPizza" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Item"]]
+script = ExtResource("1_3r527")
+
+[node name="Items-8" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80642, 1.19209e-07, 0.00578713)
+mesh = ExtResource("1_vyqaa")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_j668b")

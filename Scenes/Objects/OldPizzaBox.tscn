@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm2juwn015qi5"]
+
+[ext_resource type="ArrayMesh" uid="uid://pf3cm563vstj" path="res://models/Items/Items-9.obj" id="1_21wxy"]
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="1_a2mt3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g010t"]
+size = Vector3(0.816369, 0.314471, 0.821255)
+
+[node name="OldPizzaBox" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Item"]]
+script = ExtResource("1_a2mt3")
+
+[node name="Items-9" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.330994, -0.153231, 1.94351)
+mesh = ExtResource("1_21wxy")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0119549, 0, 0)
+shape = SubResource("BoxShape3D_g010t")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp86wc84ufoqu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_swiyf"]
+size = Vector3(16.2229, 1, 21.5753)
+
+[node name="LoreRoomDetector" type="Area3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10.836)
+shape = SubResource("BoxShape3D_swiyf")

@@ -1,0 +1,563 @@
+[gd_scene load_steps=32 format=3 uid="uid://dr0e6ftc4saoh"]
+
+[ext_resource type="Script" path="res://Scripts/World.gd" id="1_ow6ws"]
+[ext_resource type="PackedScene" uid="uid://djolv7pqoi704" path="res://Scenes/bedroomand_main_room.tscn" id="1_qey0t"]
+[ext_resource type="PackedScene" uid="uid://bklnblsabip41" path="res://Scenes/Player.tscn" id="2_mst2r"]
+[ext_resource type="PackedScene" uid="uid://0ygq6pr78ol" path="res://Scenes/Door.tscn" id="3_5b00x"]
+[ext_resource type="PackedScene" uid="uid://1bd6ouwuoav8" path="res://Scenes/AlarmLight.tscn" id="4_uuhms"]
+[ext_resource type="PackedScene" uid="uid://c4052nb0vuxf7" path="res://Scenes/Objects/OrangeJuice.tscn" id="5_kmt6l"]
+[ext_resource type="PackedScene" uid="uid://bytlbnj2m1osy" path="res://Scenes/Objects/OldWire.tscn" id="6_wdlkq"]
+[ext_resource type="PackedScene" uid="uid://cm2juwn015qi5" path="res://Scenes/Objects/OldPizzaBox.tscn" id="7_awpcf"]
+[ext_resource type="PackedScene" uid="uid://djsy6ahkrrqyx" path="res://Scenes/Objects/OldElectronics.tscn" id="8_iw8md"]
+[ext_resource type="PackedScene" uid="uid://t7iq0j74okl0" path="res://Scenes/Objects/LargeCola.tscn" id="9_4dsxc"]
+[ext_resource type="PackedScene" uid="uid://djbvdiadsqd3l" path="res://Scenes/Rooms/FathersCouch.tscn" id="10_fr82x"]
+[ext_resource type="PackedScene" uid="uid://jfeou1dw30dl" path="res://Scenes/Bin.tscn" id="10_kkffd"]
+[ext_resource type="PackedScene" uid="uid://6k5axeh7s5x6" path="res://Scenes/Rooms/KidsRoom.tscn" id="11_c1ck5"]
+[ext_resource type="PackedScene" uid="uid://cparcbyjo27x7" path="res://Scenes/Rooms/KidsRoomStorage.tscn" id="12_n57hr"]
+[ext_resource type="PackedScene" uid="uid://bedu0ovxwvs8e" path="res://Scenes/StartScreenCamera.tscn" id="13_w0v3y"]
+[ext_resource type="PackedScene" uid="uid://c766agsm25cjv" path="res://Scenes/Objects/Dumbell.tscn" id="15_yj0ey"]
+[ext_resource type="PackedScene" uid="uid://g4tkf4y6rqb1" path="res://Scenes/Objects/MoldyPizza.tscn" id="16_j0njv"]
+[ext_resource type="PackedScene" uid="uid://damfqplwkbrir" path="res://Scenes/Objects/OldFood.tscn" id="17_3qro5"]
+[ext_resource type="PackedScene" uid="uid://p57f5ts1x7f0" path="res://Scenes/Objects/Cereal.tscn" id="18_ke4cf"]
+[ext_resource type="PackedScene" uid="uid://dmeb508bcjj78" path="res://Scenes/Objects/Lore/GreenAlcohol.tscn" id="19_0ry50"]
+[ext_resource type="PackedScene" uid="uid://c5w5xv7igom0p" path="res://Scenes/Objects/Lore/PackingBox.tscn" id="20_a0a4y"]
+[ext_resource type="PackedScene" uid="uid://u0ofm8275c5k" path="res://Scenes/Objects/Lore/FamilyFrame.tscn" id="21_a6gp7"]
+[ext_resource type="PackedScene" uid="uid://dp86wc84ufoqu" path="res://Scenes/Objects/LoreRoomDetector.tscn" id="22_um5cv"]
+
+[sub_resource type="Environment" id="Environment_mrd36"]
+background_energy_multiplier = 0.0
+ambient_light_energy = 0.0
+ssao_enabled = true
+sdfgi_enabled = true
+sdfgi_use_occlusion = true
+sdfgi_read_sky_light = false
+sdfgi_bounce_feedback = 1.67
+sdfgi_y_scale = 2
+sdfgi_energy = 1.875
+glow_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_cq1fg"]
+script/source = "extends OmniLight3D
+
+var new_energy_value = 0.39
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	light_energy = lerpf(light_energy, new_energy_value, delta)
+
+
+func _on_timer_timeout():
+	new_energy_value = randf()
+"
+
+[sub_resource type="BoxMesh" id="BoxMesh_flqcm"]
+
+[sub_resource type="Shader" id="Shader_4ubpo"]
+code = "shader_type spatial;
+
+uniform float amount = 40.0;
+
+void fragment() {
+	vec2 uv = UV*0.05;
+	float a = fract(sin(dot(UV, vec2(12.9898, 78.233)*TIME))*438.5453)*1.9;
+	ALBEDO *= a;
+	EMISSION = vec3(1,1,1) * a;
+	
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j183n"]
+render_priority = 0
+shader = SubResource("Shader_4ubpo")
+shader_parameter/amount = 40.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dh1nf"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 12.04
+rim_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_nkub7"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_64m4u"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="World" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9244, 0, 0)
+script = ExtResource("1_ow6ws")
+
+[node name="Player" parent="." instance=ExtResource("2_mst2r")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5301, 0.348981, 6.07217)
+
+[node name="Camera3D" parent="Player/Head" index="0"]
+current = false
+
+[node name="DialogueText" parent="Player/Head/Camera3D/UI/Dialogue/MarginContainer" index="0"]
+theme_override_font_sizes/font_size = 13
+
+[node name="StartScreen" parent="." instance=ExtResource("13_w0v3y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3364, 1.1, 6.91317)
+
+[node name="Camera3D" parent="StartScreen" index="0"]
+transform = Transform3D(0.160471, 0.123325, 0.979306, 0.888399, 0.414298, -0.197747, -0.430111, 0.901748, -0.0430788, -0.079319, 0.208289, 0.527717)
+current = true
+
+[node name="Bedroom_and_Mainroom" parent="." instance=ExtResource("1_qey0t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53026, 0, 1.51228)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mrd36")
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="KitchenLight" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0392, 3.61839, 7.68884)
+light_color = Color(0.996094, 0.996094, 0.597656, 1)
+light_energy = 0.39
+shadow_enabled = true
+shadow_blur = 7.19
+omni_range = 24.1097
+script = SubResource("GDScript_cq1fg")
+
+[node name="Timer" type="Timer" parent="Lights/KitchenLight"]
+autostart = true
+
+[node name="CRTLight" type="SpotLight3D" parent="Lights"]
+transform = Transform3D(0.00628316, 0, -0.99998, 0, 1, 0, 0.99998, 0, 0.00628316, 13.6487, 1.09376, -1.38115)
+light_energy = 7.318
+light_indirect_energy = 5.25
+shadow_enabled = true
+spot_range = 8.40159
+spot_angle = 77.2291
+
+[node name="MonitorLight" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1235, 1.9228, -1.68735)
+shadow_enabled = true
+shadow_blur = 8.143
+omni_range = 10.3508
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Lights"]
+transform = Transform3D(0.999997, 0.00246651, 9.21649e-05, -0.00229967, 0.944616, -0.32817, -0.000896497, 0.328169, 0.944619, 0, 0, 0)
+shadow_enabled = true
+
+[node name="AlarmLight" parent="Lights" instance=ExtResource("4_uuhms")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3467, 1.22903, 7.99447)
+
+[node name="CRTScreen" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.146426, 0, 0, 0, 0.782001, 0, 0, 0, 1, 13.6302, 1.04542, -1.47175)
+mesh = SubResource("BoxMesh_flqcm")
+surface_material_override/0 = SubResource("ShaderMaterial_j183n")
+
+[node name="MonitorScreen" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0214405, 0, 0, 0, 0.611525, 0, 0, 0, 0.901576, 26.1515, 2.04874, -1.59954)
+mesh = SubResource("BoxMesh_flqcm")
+skeleton = NodePath("../CRTScreen")
+surface_material_override/0 = SubResource("StandardMaterial3D_dh1nf")
+
+[node name="Doors" type="Node3D" parent="."]
+transform = Transform3D(0.0214405, 0, 0, 0, 0.611525, 0, 0, 0, 0.901576, 26.1515, 2.04874, -1.59954)
+
+[node name="Door2" parent="Doors" instance=ExtResource("3_5b00x")]
+transform = Transform3D(-46.6407, 0, -4.07746e-06, 0, 1.63526, 0, 9.69666e-08, 0, -1.10917, -399.949, -3.24713, 13.4155)
+
+[node name="DoorStatic" parent="Doors/Door2" index="0"]
+can_open = false
+
+[node name="DoorMesh" parent="Doors/Door2/DoorStatic" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26429, 0.0238249, 0)
+
+[node name="Door3" parent="Doors" instance=ExtResource("3_5b00x")]
+transform = Transform3D(-2.03873e-06, 0, 46.6407, 0, 1.63526, 0, -1.10917, 0, -4.84833e-08, -303.272, -3.14246, 3.15683)
+
+[node name="Door" parent="Doors" instance=ExtResource("3_5b00x")]
+process_mode = 4
+transform = Transform3D(-2.03873e-06, -4.07747e-06, -46.6407, 0, -1.63526, 1.42959e-07, -1.10917, 4.23856e-15, 4.84833e-08, -635.041, 1.86671, 11.2032)
+visible = false
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="OrangeJuice" parent="Objects" instance=ExtResource("5_kmt6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4395, 0.5, -0.27825)
+
+[node name="RigidBody3D" parent="Objects/OrangeJuice" index="0"]
+dialogue_text = "Jesus the expiry on this"
+
+[node name="OldWire" parent="Objects" instance=ExtResource("6_wdlkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1366, 0.5, -0.499896)
+
+[node name="RigidBody3D" parent="Objects/OldWire" index="0"]
+dialogue_text = "Suprised I havent electrocuted myself"
+
+[node name="OldPizzaBox" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.8235, 0.427919, 0.57137)
+
+[node name="RigidBody3D" parent="Objects/OldPizzaBox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10638, 0, -4.28051)
+dialogue_text = "Smells as bad as Max"
+
+[node name="OldPizzaBox2" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6697, 0.517996, -1.69036)
+
+[node name="OldPizzaBox3" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9532, 0.5, -2.68963)
+
+[node name="OldWire2" parent="Objects" instance=ExtResource("6_wdlkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4974, 0.5, -1.37706)
+
+[node name="OldWire3" parent="Objects" instance=ExtResource("6_wdlkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1038, 0.5, -1.57307)
+
+[node name="OldWire4" parent="Objects" instance=ExtResource("6_wdlkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4854, 0.59278, -0.972441)
+
+[node name="OldElectronics" parent="Objects" instance=ExtResource("8_iw8md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9216, 0.2, 1.79908)
+
+[node name="RigidBody3D" parent="Objects/OldElectronics" index="0"]
+dialogue_text = "Is this like a plug or something?"
+
+[node name="OldElectronics2" parent="Objects" instance=ExtResource("8_iw8md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5509, 0.1, 2.12919)
+
+[node name="OldElectronics3" parent="Objects" instance=ExtResource("8_iw8md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7057, 0.522156, 0.981998)
+
+[node name="LargeCola" parent="Objects" instance=ExtResource("9_4dsxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7535, 0.1, 1.0276)
+
+[node name="LargeCola2" parent="Objects" instance=ExtResource("9_4dsxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0631, 0.0999997, 1.18516)
+
+[node name="LargeCola3" parent="Objects" instance=ExtResource("9_4dsxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2024, 0.1, 0.224377)
+
+[node name="Dumbell" parent="Objects" instance=ExtResource("15_yj0ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7253, 0.5, -2.27287)
+
+[node name="RigidBody3D" parent="Objects/Dumbell" index="0"]
+dialogue_text = "I swear I'll use these at some point"
+
+[node name="Dumbell2" parent="Objects" instance=ExtResource("15_yj0ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0833, 0.0999999, -2.78281)
+
+[node name="RigidBody3D" parent="Objects/Dumbell2" index="0"]
+dialogue_text = "I'll get those muscles soon"
+
+[node name="MoldyPizza" parent="Objects" instance=ExtResource("16_j0njv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.0609, 0.0999994, -5.10989)
+
+[node name="RigidBody3D" parent="Objects/MoldyPizza" index="0"]
+dialogue_text = "You were once edible somehow"
+
+[node name="LargeCola4" parent="Objects" instance=ExtResource("9_4dsxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2264, 0.0999994, -4.42554)
+
+[node name="RigidBody3D" parent="Objects/LargeCola4" index="0"]
+dialogue_text = "Still wish there was more"
+
+[node name="LargeCola5" parent="Objects" instance=ExtResource("9_4dsxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1944, 0.814596, -4.35982)
+
+[node name="RigidBody3D" parent="Objects/LargeCola5" index="0"]
+dialogue_text = "Okay maybe I have a drinking problem"
+
+[node name="Items-4" parent="Objects/LargeCola5/RigidBody3D" index="0"]
+skeleton = NodePath("../../../LargeCola4")
+
+[node name="LargeCola6" parent="Objects" instance=ExtResource("9_4dsxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.284, 0.0999994, -3.96409)
+
+[node name="RigidBody3D" parent="Objects/LargeCola6" index="0"]
+dialogue_text = "I could contend as cola king maybe?"
+
+[node name="Items-4" parent="Objects/LargeCola6/RigidBody3D" index="0"]
+skeleton = NodePath("../../../LargeCola4")
+
+[node name="OldElectronics4" parent="Objects" instance=ExtResource("8_iw8md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8744, 0.0999994, -4.08523)
+
+[node name="OldFood" parent="Objects" instance=ExtResource("17_3qro5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6828, 0.1, -3.30753)
+
+[node name="OldWire5" parent="Objects" instance=ExtResource("6_wdlkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.006, 0.0999997, -3.66235)
+
+[node name="OldWire6" parent="Objects" instance=ExtResource("6_wdlkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6383, 0.0999997, -3.52674)
+
+[node name="OldWire7" parent="Objects" instance=ExtResource("6_wdlkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7479, 0.0999997, -4.42648)
+
+[node name="MoldyPizza2" parent="Objects" instance=ExtResource("16_j0njv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9425, 0.0999997, -5.61502)
+
+[node name="MoldyPizza3" parent="Objects" instance=ExtResource("16_j0njv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7866, 0.100002, -5.6599)
+
+[node name="Cereal" parent="Objects" instance=ExtResource("18_ke4cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7055, 0.1, -2.9161)
+
+[node name="RigidBody3D" parent="Objects/Cereal" index="0"]
+dialogue_text = "Keerios yum, cereal so good!"
+
+[node name="Cereal2" parent="Objects" instance=ExtResource("18_ke4cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9993, 1.5, -1.37356)
+
+[node name="OrangeJuice2" parent="Objects" instance=ExtResource("5_kmt6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.9902, 0.0999999, -0.0492526)
+
+[node name="RigidBody3D" parent="Objects/OrangeJuice2" index="0"]
+dialogue_text = "Maybe a little bit left, gonna grab that drop"
+
+[node name="OrangeJuice3" parent="Objects" instance=ExtResource("5_kmt6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2463, 0.6, -2.02456)
+
+[node name="OldWire8" parent="Objects" instance=ExtResource("6_wdlkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2176, 0.6, -1.50946)
+
+[node name="LargeCola7" parent="Objects" instance=ExtResource("9_4dsxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.8503, 0.6, -1.03215)
+
+[node name="Dumbell3" parent="Objects" instance=ExtResource("15_yj0ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.8356, 0.0999999, 4.20781)
+
+[node name="Dumbell4" parent="Objects" instance=ExtResource("15_yj0ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.1322, 0.0999999, 4.22983)
+
+[node name="RigidBody3D" parent="Objects/Dumbell4" index="0"]
+dialogue_text = "I seem to keep forgetting I have dumbells on the regular"
+
+[node name="OldElectronics5" parent="Objects" instance=ExtResource("8_iw8md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0785, 0.0999999, -2.98538)
+
+[node name="OldFood2" parent="Objects" instance=ExtResource("17_3qro5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.0141, 0.0999994, -2.12981)
+
+[node name="OldFood3" parent="Objects" instance=ExtResource("17_3qro5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6935, 0.0999997, -2.81583)
+
+[node name="RigidBody3D" parent="Objects/OldFood3" index="0"]
+dialogue_text = "Mold city out here"
+
+[node name="OldFood4" parent="Objects" instance=ExtResource("17_3qro5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7068, 0.0999997, -2.27134)
+
+[node name="OldPizzaBox4" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3746, 0.0999994, -1.10621)
+
+[node name="OldPizzaBox5" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6248, 0.1, -2.68615)
+
+[node name="RigidBody3D" parent="Objects/OldPizzaBox5" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.179437, 0)
+dialogue_text = "Blackmold fear me"
+
+[node name="Items-9" parent="Objects/OldPizzaBox5/RigidBody3D" index="0"]
+skeleton = NodePath("../../../OldPizzaBox4")
+
+[node name="OldWire9" parent="Objects" instance=ExtResource("6_wdlkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1452, 0.257235, -1.20953)
+
+[node name="OrangeJuice4" parent="Objects" instance=ExtResource("5_kmt6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.5053, 0.257235, -1.1379)
+
+[node name="OldPizzaBox6" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.7677, 0.0999997, 0.0239958)
+
+[node name="OrangeJuice5" parent="Objects" instance=ExtResource("5_kmt6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7074, 0.0999994, -2.55084)
+
+[node name="OrangeJuice6" parent="Objects" instance=ExtResource("5_kmt6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.4488, 0.0999994, -2.27886)
+
+[node name="LargeCola8" parent="Objects" instance=ExtResource("9_4dsxc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1081, 0.0999999, -2.71857)
+
+[node name="Dumbell5" parent="Objects" instance=ExtResource("15_yj0ey")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2052, 0.0999999, -2.91813)
+
+[node name="Cereal3" parent="Objects" instance=ExtResource("18_ke4cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5447, 0.1, -2.64506)
+
+[node name="Cereal4" parent="Objects" instance=ExtResource("18_ke4cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5583, 0.4038, -2.67921)
+
+[node name="Cereal5" parent="Objects" instance=ExtResource("18_ke4cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5665, 0.7076, -2.65777)
+
+[node name="MoldyPizza4" parent="Objects" instance=ExtResource("16_j0njv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5878, 0.618819, -2.73106)
+
+[node name="OrangeJuice7" parent="Objects" instance=ExtResource("5_kmt6l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9717, 0.1, -1.83383)
+
+[node name="OldPizzaBox7" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1505, 0.0999997, -5.45565)
+
+[node name="OldPizzaBox8" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.118, 0.257235, -5.45696)
+
+[node name="OldPizzaBox9" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1388, 0.414471, -5.51204)
+
+[node name="RigidBody3D" parent="Objects/OldPizzaBox9" index="0"]
+dialogue_text = "Holy crap, theres still a slice left"
+
+[node name="OldPizzaBox10" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1034, 0.571707, -5.58052)
+
+[node name="OldPizzaBox11" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1009, 0.728942, -5.64306)
+
+[node name="OldPizzaBox12" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1385, 0.886178, -5.66723)
+
+[node name="OldPizzaBox13" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1982, 1.04341, -5.76161)
+
+[node name="RigidBody3D" parent="Objects/OldPizzaBox13" index="0"]
+dialogue_text = "eat around the mold, eat around..."
+
+[node name="OldPizzaBox14" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2394, 1.20065, -5.85936)
+
+[node name="OldPizzaBox15" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3388, 1.35788, -5.914)
+
+[node name="OldPizzaBox16" parent="Objects" instance=ExtResource("7_awpcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4313, 1.51512, -6.02866)
+
+[node name="RigidBody3D" parent="Objects/OldPizzaBox16" index="0"]
+dialogue_text = "Leaning tower of pizza fell, I repeat"
+
+[node name="OldWire10" parent="Objects" instance=ExtResource("6_wdlkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6898, 0.1, -5.41484)
+
+[node name="OldElectronics6" parent="Objects" instance=ExtResource("8_iw8md")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2159, 0.0999999, -5.16866)
+
+[node name="MoldyPizza5" parent="Objects" instance=ExtResource("16_j0njv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2007, 0.0999999, -4.39639)
+
+[node name="RigidBody3D" parent="Objects/MoldyPizza5" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.166367, 0)
+dialogue_text = "Okay pretty sure this one looks like a flag"
+
+[node name="Bin" parent="." instance=ExtResource("10_kkffd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0773, 0.0999999, 6.41245)
+
+[node name="RigidBody3D" parent="Bin" index="0" node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.603577, 0)
+player = NodePath("../../Player/Head")
+
+[node name="KidsRoom" parent="." instance=ExtResource("11_c1ck5")]
+process_mode = 4
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 9.18771, 0, 8.52849)
+visible = false
+
+[node name="DoorStatic" parent="KidsRoom/Door" index="0" node_paths=PackedStringArray("lore_teleport_point", "player")]
+lore_teleport_point = NodePath("../../../LoreCompleteTeleportPoint")
+player = NodePath("../../../Player")
+
+[node name="KidsRoomStorage" parent="." instance=ExtResource("12_n57hr")]
+process_mode = 4
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10.5332, 0, 9.18179)
+visible = false
+
+[node name="DoorStatic" parent="KidsRoomStorage/Door" index="0" node_paths=PackedStringArray("lore_teleport_point", "player")]
+lore_teleport_point = NodePath("../../../LoreCompleteTeleportPoint")
+player = NodePath("../../../Player")
+
+[node name="FathersCouch" parent="." instance=ExtResource("10_fr82x")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.44195, 0, 9.08486)
+visible = false
+
+[node name="DoorStatic" parent="FathersCouch/Door" index="0" node_paths=PackedStringArray("lore_teleport_point", "player")]
+lore_teleport_point = NodePath("../../../LoreCompleteTeleportPoint")
+player = NodePath("../../../Player")
+
+[node name="RigidBody3D" parent="FathersCouch/Bin" index="0" node_paths=PackedStringArray("player")]
+player = NodePath("../../../Player")
+
+[node name="GreenAlcohol" parent="." instance=ExtResource("19_0ry50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4885, 0.0999999, -5.89174)
+
+[node name="RigidBody3D" parent="GreenAlcohol" index="0"]
+dialogue_text = "[He would always hit the bottle]"
+
+[node name="PackingBox" parent="." instance=ExtResource("20_a0a4y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1304, 0.1, -2.72557)
+
+[node name="RigidBody3D" parent="PackingBox" index="0"]
+dialogue_text = "@You are filth@"
+
+[node name="FamilyFrame" parent="." instance=ExtResource("21_a6gp7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0254, 0.162296, 0.0698785)
+
+[node name="RigidBody3D" parent="FamilyFrame" index="0"]
+dialogue_text = "~They Will Never Forget~"
+
+[node name="LoreRoomDetector" parent="." instance=ExtResource("22_um5cv")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11.5754, 1.41626, 9.75539)
+
+[node name="FalseWall" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0664806, 0, 0, 0, 5.24603, 0, 0, 0, 3.33828, 12.4333, 1.01811, 9.10257)
+mesh = SubResource("BoxMesh_nkub7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="FalseWall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FalseWall/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_64m4u")
+
+[node name="LoreCompleteTeleportPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9184, 1.3235, 2.09789)
+
+[connection signal="button_up" from="StartScreen/Camera3D/Control/Control/AspectRatioContainer/Container/Start" to="." method="_on_start_button_up"]
+[connection signal="button_up" from="StartScreen/Camera3D/Control/Control/AspectRatioContainer/Container/Quit" to="." method="_on_quit_button_up"]
+[connection signal="timeout" from="Lights/KitchenLight/Timer" to="Lights/KitchenLight" method="_on_timer_timeout"]
+[connection signal="body_entered" from="LoreRoomDetector" to="." method="_on_lore_room_detector_body_entered"]
+[connection signal="body_exited" from="LoreRoomDetector" to="." method="_on_lore_room_detector_body_exited"]
+
+[editable path="Player"]
+[editable path="StartScreen"]
+[editable path="Doors/Door2"]
+[editable path="Doors/Door3"]
+[editable path="Doors/Door"]
+[editable path="Objects/OrangeJuice"]
+[editable path="Objects/OldWire"]
+[editable path="Objects/OldPizzaBox"]
+[editable path="Objects/OldPizzaBox2"]
+[editable path="Objects/OldElectronics"]
+[editable path="Objects/Dumbell"]
+[editable path="Objects/Dumbell2"]
+[editable path="Objects/MoldyPizza"]
+[editable path="Objects/LargeCola4"]
+[editable path="Objects/LargeCola5"]
+[editable path="Objects/LargeCola6"]
+[editable path="Objects/Cereal"]
+[editable path="Objects/OrangeJuice2"]
+[editable path="Objects/Dumbell4"]
+[editable path="Objects/OldFood3"]
+[editable path="Objects/OldPizzaBox5"]
+[editable path="Objects/OldPizzaBox9"]
+[editable path="Objects/OldPizzaBox13"]
+[editable path="Objects/OldPizzaBox16"]
+[editable path="Objects/MoldyPizza5"]
+[editable path="Bin"]
+[editable path="KidsRoom"]
+[editable path="KidsRoom/Door"]
+[editable path="KidsRoomStorage"]
+[editable path="KidsRoomStorage/Door"]
+[editable path="FathersCouch"]
+[editable path="FathersCouch/Door"]
+[editable path="FathersCouch/Bin"]
+[editable path="GreenAlcohol"]
+[editable path="PackingBox"]
+[editable path="FamilyFrame"]

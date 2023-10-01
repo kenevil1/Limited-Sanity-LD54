@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://xye4iguw3nx2"
+path="res://.godot/imported/BedroomandMainRoom-1.obj-73976ba33a519ec5c39baed279be67ba.mesh"
+
+[deps]
+
+files=["res://.godot/imported/BedroomandMainRoom-1.obj-73976ba33a519ec5c39baed279be67ba.mesh"]
+
+source_file="res://models/BedroomandMainRoom/BedroomandMainRoom-1.obj"
+dest_files=["res://.godot/imported/BedroomandMainRoom-1.obj-73976ba33a519ec5c39baed279be67ba.mesh", "res://.godot/imported/BedroomandMainRoom-1.obj-73976ba33a519ec5c39baed279be67ba.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

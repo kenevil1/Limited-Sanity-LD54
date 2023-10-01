@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bf8t12bh8ai4l"
+path="res://.godot/imported/KidsRoom-3.obj-b5216b10395cf0ca79d0ec10f228b33b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/KidsRoom-3.obj-b5216b10395cf0ca79d0ec10f228b33b.mesh"]
+
+source_file="res://models/KidsRoom/KidsRoom-3.obj"
+dest_files=["res://.godot/imported/KidsRoom-3.obj-b5216b10395cf0ca79d0ec10f228b33b.mesh", "res://.godot/imported/KidsRoom-3.obj-b5216b10395cf0ca79d0ec10f228b33b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

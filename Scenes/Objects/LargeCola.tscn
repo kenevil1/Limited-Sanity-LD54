@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://t7iq0j74okl0"]
+
+[ext_resource type="ArrayMesh" uid="uid://dvl06kqftb46y" path="res://models/Items/Items-4.obj" id="1_hk1fc"]
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="1_u0a8t"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ynvsx"]
+radius = 0.269862
+height = 0.874173
+
+[node name="LargeCola" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Item"]]
+script = ExtResource("1_u0a8t")
+
+[node name="Items-4" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26258, 0.0215431, -1.43621)
+mesh = ExtResource("1_hk1fc")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.287595, 0)
+shape = SubResource("CapsuleShape3D_ynvsx")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c766agsm25cjv"]
+
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="1_2gi55"]
+[ext_resource type="ArrayMesh" uid="uid://c18rk21fnkttm" path="res://models/Items/Items-10.obj" id="1_nfcag"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1w6ai"]
+size = Vector3(0.504886, 1, 0.573754)
+
+[node name="Dumbell" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Item"]]
+script = ExtResource("1_2gi55")
+
+[node name="Items-10" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67113, 0, -0.0406024)
+mesh = ExtResource("1_nfcag")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0250796, 0.415222, -0.0860041)
+shape = SubResource("BoxShape3D_1w6ai")

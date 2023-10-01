@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bber16nwysqb5"]
+
+[ext_resource type="ArrayMesh" uid="uid://cybxfpvfotiku" path="res://models/Items/Items-1.obj" id="1_86gn4"]
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="1_f53s8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6tv4d"]
+size = Vector3(0.458127, 0.154533, 0.696616)
+
+[node name="Lighter" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Item", "Lighter"]]
+script = ExtResource("1_f53s8")
+
+[node name="Items-1" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88924, -1.19209e-07, 1.65374)
+mesh = ExtResource("1_86gn4")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0770328, -0.0805721)
+shape = SubResource("BoxShape3D_6tv4d")

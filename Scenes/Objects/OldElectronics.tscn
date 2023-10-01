@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://djsy6ahkrrqyx"]
+
+[ext_resource type="Script" path="res://Scripts/ItemScript.gd" id="1_c0bf0"]
+[ext_resource type="ArrayMesh" uid="uid://dlug6a5n2a47y" path="res://models/Items/Items-6.obj" id="1_gyuh0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8c4xu"]
+size = Vector3(0.39216, 0.344054, 0.583604)
+
+[node name="OldElectronics" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["Item"]]
+script = ExtResource("1_c0bf0")
+
+[node name="Items-6" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.879797, -0.00871202, 1.37091)
+mesh = ExtResource("1_gyuh0")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127868, 0)
+shape = SubResource("BoxShape3D_8c4xu")

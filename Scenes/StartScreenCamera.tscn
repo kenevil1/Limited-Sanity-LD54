@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://bedu0ovxwvs8e"]
+
+[ext_resource type="FontFile" uid="uid://bn7xe5rangiex" path="res://UI/superstar_memesbruh03.ttf" id="1_iveic"]
+
+[node name="StartScreen" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.430511, -0.902585, 0, 0.902585, 0.430511, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Control" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Camera3D/Control"]
+layout_mode = 2
+offset_left = 131.0
+offset_top = 75.0
+offset_right = 337.0
+offset_bottom = 110.0
+theme_override_fonts/font = ExtResource("1_iveic")
+theme_override_font_sizes/font_size = 32
+text = "LIMITED SANITY"
+
+[node name="Control" type="Control" parent="Camera3D/Control"]
+anchors_preset = 0
+offset_left = 197.0
+offset_top = 166.0
+offset_right = 237.0
+offset_bottom = 206.0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="Camera3D/Control/Control"]
+layout_mode = 0
+offset_right = 88.0
+offset_bottom = 40.0
+
+[node name="Container" type="BoxContainer" parent="Camera3D/Control/Control/AspectRatioContainer"]
+layout_mode = 2
+
+[node name="Start" type="Button" parent="Camera3D/Control/Control/AspectRatioContainer/Container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iveic")
+text = "START"
+
+[node name="Quit" type="Button" parent="Camera3D/Control/Control/AspectRatioContainer/Container"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_iveic")
+text = "Quit
+"
