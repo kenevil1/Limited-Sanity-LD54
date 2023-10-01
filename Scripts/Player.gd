@@ -16,6 +16,9 @@ var play_fov_effect = false
 var goal_fov = 1
 var goal_tp_point : Node3D = null
 
+var lore_items_found = 0
+
+@export var end3 : Node3D
 
 func drop_current_object():
 	if grabbed_object != null:
@@ -64,11 +67,18 @@ func teleport_effect_logic(delta):
 		goal_fov = 75
 
 func play_teleport_effect(lore_teleport_point):
+	lore_items_found+=1
 	play_fov_effect = true
 	goal_fov = 1
 	goal_tp_point = lore_teleport_point
 
 func _process(delta):
+	print(lore_items_found)
+	
+	if lore_items_found >= 3:
+		end3.visible = true
+		end3.process_mode = Node.PROCESS_MODE_INHERIT
+	
 	if play_fov_effect:
 		teleport_effect_logic(delta)
 	

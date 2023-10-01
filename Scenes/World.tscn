@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dr0e6ftc4saoh"]
+[gd_scene load_steps=34 format=3 uid="uid://dr0e6ftc4saoh"]
 
 [ext_resource type="Script" path="res://Scripts/World.gd" id="1_ow6ws"]
 [ext_resource type="PackedScene" uid="uid://djolv7pqoi704" path="res://Scenes/bedroomand_main_room.tscn" id="1_qey0t"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://c5w5xv7igom0p" path="res://Scenes/Objects/Lore/PackingBox.tscn" id="20_a0a4y"]
 [ext_resource type="PackedScene" uid="uid://u0ofm8275c5k" path="res://Scenes/Objects/Lore/FamilyFrame.tscn" id="21_a6gp7"]
 [ext_resource type="PackedScene" uid="uid://dp86wc84ufoqu" path="res://Scenes/Objects/LoreRoomDetector.tscn" id="22_um5cv"]
+[ext_resource type="Script" path="res://Scenes/End3.gd" id="24_16enl"]
 
 [sub_resource type="Environment" id="Environment_mrd36"]
 background_energy_multiplier = 0.0
@@ -87,13 +88,17 @@ rim_enabled = true
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_64m4u"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ooj40"]
+size = Vector3(6.98101, 8.32047, 8.84373)
+
 [node name="World" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.9244, 0, 0)
 script = ExtResource("1_ow6ws")
 
-[node name="Player" parent="." instance=ExtResource("2_mst2r")]
+[node name="Player" parent="." node_paths=PackedStringArray("end3") instance=ExtResource("2_mst2r")]
 process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.5301, 0.348981, 6.07217)
+end3 = NodePath("../End3")
 
 [node name="Camera3D" parent="Player/Head" index="0"]
 current = false
@@ -519,11 +524,39 @@ shape = SubResource("ConcavePolygonShape3D_64m4u")
 [node name="LoreCompleteTeleportPoint" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9184, 1.3235, 2.09789)
 
+[node name="End3" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2598, 1.63619, -1.91996)
+visible = false
+script = ExtResource("24_16enl")
+player = NodePath("../Player")
+
+[node name="Area3D" type="Area3D" parent="End3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End3/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.62603, 0, 0)
+shape = SubResource("BoxShape3D_ooj40")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="End3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.33914, 1.82174, 0)
+light_color = Color(0.0784314, 1, 1, 1)
+shadow_enabled = true
+
+[node name="SecondDia" type="Timer" parent="End3"]
+wait_time = 6.581
+one_shot = true
+
+[node name="End" type="Timer" parent="End3"]
+wait_time = 4.521
+
 [connection signal="button_up" from="StartScreen/Camera3D/Control/Control/AspectRatioContainer/Container/Start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="StartScreen/Camera3D/Control/Control/AspectRatioContainer/Container/Quit" to="." method="_on_quit_button_up"]
 [connection signal="timeout" from="Lights/KitchenLight/Timer" to="Lights/KitchenLight" method="_on_timer_timeout"]
 [connection signal="body_entered" from="LoreRoomDetector" to="." method="_on_lore_room_detector_body_entered"]
 [connection signal="body_exited" from="LoreRoomDetector" to="." method="_on_lore_room_detector_body_exited"]
+[connection signal="body_entered" from="End3/Area3D" to="End3" method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="End3/SecondDia" to="End3" method="_on_timer_timeout"]
+[connection signal="timeout" from="End3/End" to="End3" method="_on_end_timeout"]
 
 [editable path="Player"]
 [editable path="StartScreen"]
