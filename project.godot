@@ -14,7 +14,8 @@ config/name="LD54-project"
 run/main_scene="res://Scenes/World.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
-config/icon="res://icon.svg"
+config/icon="res://Screenshot 2023-10-01 212406.png"
+config/windows_native_icon="res://Screenshot 2023-10-01 200923.ico"
 
 [display]
 
